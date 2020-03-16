@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>Kaappi</th>
+      <th>Tasoja</th>
+    </tr>
+    {% for kaappi in kaapit %}
+    <tr>
+      <td>{{ kaappi.nimi }}</td>
+      <td>{{ kaappi.tasoja }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

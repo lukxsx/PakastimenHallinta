@@ -6,6 +6,10 @@
 	</head>
 
 	<body>
+		<ul>
+			<li><a href="{{ url_for('kaappi_listaus') }}">Listaa kaapit</a></li>
+			<li><a href="{{ url_for('kaappi_lisays') }}">Lisää kaappi</a></li>
+		</ul>
 		{% block body %}
 		<p>sisältöä</p>
 		{% endblock %}
