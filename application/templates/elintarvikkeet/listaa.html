@@ -4,12 +4,12 @@
 <table>
     <tr>
         <th>Elintarvike</th>
-        <th>Säilyvyys</th>
+        <th>Säilyvyys päivinä</th>
     </tr>
     {% for elintarvike in elintarvikkeet %}
     <tr>
         <td>{{ elintarvike.nimi }}</td>
-        <td>{{ elintarvike.tasoja }}</td>
+        <td>{{ elintarvike.sailyvyys }}</td>
     </tr>
     {% endfor %}
 </table>

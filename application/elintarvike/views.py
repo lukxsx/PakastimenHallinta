@@ -16,8 +16,9 @@ def elintarvike_lisays():
 @app.route("/elintarvikkeet/", methods=["POST"])
 def elintarvike_lisaaja():
     nimi = request.form.get("nimi")
-    sailyvyys = request.form.get("sailyvyys")
-    e = Elintarvike(nimi, sailyvyys)
+    s = request.form.get("sailyvyys")
+    print(s)
+    e = Elintarvike(nimi, s)
     db.session().add(e)
     db.session().commit()
 

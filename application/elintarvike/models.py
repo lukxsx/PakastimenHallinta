@@ -6,6 +6,6 @@ class Elintarvike(db.Model):
     nimi = db.Column(db.String(144), nullable=False)
     sailyvyys = db.Column(db.Integer, nullable=False)
 
-    def __init__(self, nimi, sailyvyys):
+    def __init__(self, nimi, s):
         self.nimi = nimi
-        self.sailvyys = sailyvyys
+        self.sailyvyys = s
