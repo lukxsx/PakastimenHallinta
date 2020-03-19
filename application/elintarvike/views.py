@@ -13,6 +13,14 @@ def elintarvike_lisays():
     return render_template("elintarvikkeet/lisaa.html")
 
 
+@app.route("/elintarvikkeet/<elintarvike_id>/", methods=["POST"])
+def elintarvike_paivitys(elintarvike_id):
+    elin = Elintarvike.query.get(elintarvike_id)
+    elin.sailyvyys = request.form.get("uusi")
+    db.session.commit()
+    return redirect(url_for("elintarvike_listaus"))
+
+
 @app.route("/elintarvikkeet/", methods=["POST"])
 def elintarvike_lisaaja():
     nimi = request.form.get("nimi")

@@ -5,11 +5,18 @@
     <tr>
         <th>Elintarvike</th>
         <th>Säilyvyys päivinä</th>
+        <th>Päivitä säilyvyys</th>
     </tr>
     {% for elintarvike in elintarvikkeet %}
     <tr>
         <td>{{ elintarvike.nimi }}</td>
         <td>{{ elintarvike.sailyvyys }}</td>
+        <td>
+            <form method="POST" action="{{ url_for('elintarvike_paivitys', elintarvike_id=elintarvike.id) }}">
+                <input type="text" name="uusi"/>
+                <input type="submit" value="Päivitä säilyvyys"/>
+            </form>
+        </td>
     </tr>
     {% endfor %}
 </table>
