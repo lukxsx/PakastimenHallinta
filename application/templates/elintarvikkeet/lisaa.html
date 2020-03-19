@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('elintarvike_lisaaja') }}">
+    <input type="text" name="nimi"/>
+    <input type="text" name="sailyvyys"/>
+    <input type="submit" value="Lisaa elintarvike tietokantaan"/>
+</form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<table>
+    <tr>
+        <th>Elintarvike</th>
+        <th>Säilyvyys</th>
+    </tr>
+    {% for elintarvike in elintarvikkeet %}
+    <tr>
+        <td>{{ elintarvike.nimi }}</td>
+        <td>{{ elintarvike.tasoja }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
