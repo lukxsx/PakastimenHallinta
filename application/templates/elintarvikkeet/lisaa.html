@@ -2,8 +2,42 @@
 
 {% block body %}
 <form method="POST" action="{{ url_for('elintarvike_lisaaja') }}">
-    <input type="text" name="nimi"/>
-    <input type="text" name="sailyvyys"/>
-    <input type="submit" value="Lisaa elintarvike tietokantaan"/>
+    <table>
+        <tr>
+            <td>
+                {{ form.nimi.label }}
+            </td>
+            <td>
+                {{ form.nimi }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.nimi.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.sailyvyys.label }}
+            </td>
+            <td>
+                {{ form.sailyvyys }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.sailyvyys.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Lisää elintarvike tietokantaan"/>
+            </td>
+        </tr>
+    </table>
 </form>
 {% endblock %}
