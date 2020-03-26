@@ -4,10 +4,14 @@ app = Flask(__name__)
 
 from flask_sqlalchemy import SQLAlchemy
 
-# tietokannan asetukset
+import os
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tietokanta.db"
-app.config["SQLALCHEMY_ECHO"] = True
+if os.environ.get("HEROKU"):
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+else:
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tietokanta.db"
+    app.config["SQLALCHEMY_ECHO"] = True
+
 db = SQLAlchemy(app)
 
 # pääsivut
@@ -39,4 +43,7 @@ login_manager.login_message = "Kirjaudu sisään"
 def load_user(user_id):
     return Kayttaja.query.get(user_id)
 
-db.create_all()
+try:
+    db.create_all()
+except:
+    pass
