@@ -2,8 +2,72 @@
 
 {% block body %}
 <form method="POST" action="{{ url_for('ek_lisaaja') }}">
-    <table>
-
+<table>
+        <tr>
+            <td>
+                {{ form.elintarvike.label }}
+            </td>
+            <td>
+                {{ form.elintarvike }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.elintarvike.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+    <tr>
+            <td>
+                {{ form.kaappi.label }}
+            </td>
+            <td>
+                {{ form.kaappi }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.kaappi.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+    <tr>
+            <td>
+                {{ form.taso.label }}
+            </td>
+            <td>
+                {{ form.taso }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.taso.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+    <tr>
+            <td>
+                {{ form.maara.label }}
+            </td>
+            <td>
+                {{ form.maara }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.maara.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Lisää elintarvike tietokantaan"/>
+            </td>
+        </tr>
     </table>
 </form>
 {% endblock %}

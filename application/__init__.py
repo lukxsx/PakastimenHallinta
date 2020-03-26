@@ -39,5 +39,4 @@ login_manager.login_message = "Kirjaudu sisään"
 def load_user(user_id):
     return Kayttaja.query.get(user_id)
 
-# luo tietokannat
 db.create_all()
