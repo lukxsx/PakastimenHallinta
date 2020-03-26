@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block body %}
+{{ error }}
+<form method="POST" action="{{ url_for('kayttajan_luonti') }}">
+    <table>
+        <tr>
+            <td>
+                {{ form.tunnus.label }}
+            </td>
+            <td>
+                {{ form.tunnus }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.tunnus.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.salasana.label }}
+            </td>
+            <td>
+                {{ form.salasana }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.salasana.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.varmistus.label }}
+            </td>
+            <td>
+                {{ form.varmistus }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.varmistus.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Luo uusi käyttäjä"/>
+            </td>
+        </tr>
+    </table>
+</form>
+{% endblock %}

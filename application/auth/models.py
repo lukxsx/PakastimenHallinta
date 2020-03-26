@@ -8,13 +8,10 @@ class Kayttaja(db.Model):
     date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
     date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
                               onupdate=db.func.current_timestamp())
-
-    nimi = db.Column(db.String(144), nullable=False)
     tunnus = db.Column(db.String(144), nullable=False)
     salasana = db.Column(db.String(144), nullable=False)
 
-    def __init__(self, nimi, tunnus, salasana):
-        self.nimi = nimi
+    def __init__(self, tunnus, salasana):
         self.tunnus = tunnus
         self.salasana = salasana
 

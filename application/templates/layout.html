@@ -7,10 +7,11 @@
 
 <body>
 {% if current_user.is_authenticated %}
-<p>Käyttäjä: {{ current_user.name }}</p>
+<p>Kirjautuneena sisään: {{ current_user.tunnus }}</p>
 <p><a href="{{ url_for('uloskirjautuminen') }}">Kirjaudu ulos</a></p>
 {% else %}
 <a href="{{ url_for('kirjautuminen') }}">Kirjaudu</a>
+<a href="{{ url_for('kayttajan_luonti') }}">Rekisteröidy</a>
 {% endif %}
 <ul>
     <li><a href="{{ url_for('elintarvike_listaus') }}">Listaa elintarvikkeet</a></li>
