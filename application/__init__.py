@@ -11,5 +11,7 @@ db = SQLAlchemy(app)
 from application import views
 from application.elintarvike import models
 from application.elintarvike import views
+from application.auth import models
+from application.auth import views
 
 db.create_all()
