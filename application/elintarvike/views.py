@@ -1,5 +1,6 @@
 from application import app, db
 from flask import redirect, render_template, request, url_for
+from flask_login import login_required
 from application.elintarvike.models import Elintarvike
 from application.elintarvike.forms import ElintarvikeForm
 
@@ -10,11 +11,13 @@ def elintarvike_listaus():
 
 
 @app.route("/elintarvikkeet/lisaa/")
+@login_required
 def elintarvike_lisays():
     return render_template("elintarvikkeet/lisaa.html", form = ElintarvikeForm())
 
 
 @app.route("/elintarvikkeet/<elintarvike_id>/", methods=["POST"])
+@login_required
 def elintarvike_paivitys(elintarvike_id):
     elin = Elintarvike.query.get(elintarvike_id)
     elin.sailyvyys = request.form.get("uusi")
@@ -23,6 +26,7 @@ def elintarvike_paivitys(elintarvike_id):
 
 
 @app.route("/elintarvikkeet/", methods=["POST"])
+@login_required
 def elintarvike_lisaaja():
     form = ElintarvikeForm(request.form)
     if not form.validate():
