@@ -6,6 +6,7 @@ from application.kaappi.forms import KaappiForm
 
 
 @app.route("/kaapit", methods=["GET"])
+@login_required
 def kaappi_listaus():
     return render_template("kaapit/listaa.html", kaapit=Kaappi.query.all())
 

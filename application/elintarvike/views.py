@@ -6,6 +6,7 @@ from application.elintarvike.forms import ElintarvikeForm
 
 
 @app.route("/elintarvikkeet", methods=["GET"])
+@login_required
 def elintarvike_listaus():
     return render_template("elintarvikkeet/listaa.html", elintarvikkeet=Elintarvike.query.all())
 

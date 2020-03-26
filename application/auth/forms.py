@@ -12,8 +12,8 @@ class LoginForm(FlaskForm):
 
 class CreateAccount(FlaskForm):
     tunnus = StringField("Käyttäjätunnus: ", [validators.InputRequired()])
-    salasana = PasswordField('New Password', [validators.InputRequired(), validators.EqualTo('varmistus', message='Salasanat eivät täsmää!')])
-    varmistus = PasswordField('Repeat Password')
+    salasana = PasswordField('Salasana', [validators.InputRequired(), validators.EqualTo('varmistus', message='Salasanat eivät täsmää!')])
+    varmistus = PasswordField('Salasanan uudestaan')
 
     class Meta:
         csrf = False
