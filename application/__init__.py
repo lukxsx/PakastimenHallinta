@@ -16,6 +16,9 @@ from application import views
 # elintarvikkeet
 from application.elintarvike import models, views
 
+# elintarvikkeet kaapissa
+from application.elintarvikekaapissa import models, views
+
 # kaapit
 from application.kaappi import models, views
 
