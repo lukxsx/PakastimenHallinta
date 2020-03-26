@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<table>
+    <tr>
+        <th>Kaappi</th>
+        <th>Tasoja kaapissa</th>
+        <th>Päivitä tasojen määrä</th>
+    </tr>
+    {% for kaappi in kaapit %}
+    <tr>
+        <td>{{ kaappi.nimi }}</td>
+        <td>{{ kaappi.tasoja }}</td>
+        <td>
+            <form method="POST" action="{{ url_for('kaappi_paivitys', kaappi_id=kaappi.id) }}">
+                <input type="text" name="uusi"/>
+                <input type="submit" value="Päivitä säilyvyys"/>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

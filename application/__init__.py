@@ -4,16 +4,23 @@ app = Flask(__name__)
 
 from flask_sqlalchemy import SQLAlchemy
 
+# tietokannan asetukset
+
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tietokanta.db"
 app.config["SQLALCHEMY_ECHO"] = True
 db = SQLAlchemy(app)
 
+# pääsivut
 from application import views
-from application.elintarvike import models
-from application.elintarvike import views
-from application.auth import models
-from application.auth import views
 
+# elintarvikkeet
+from application.elintarvike import models, views
+
+# kaapit
+from application.kaappi import models, views
+
+# kirjautuminen
+from application.auth import models, views
 from application.auth.models import Kayttaja
 from os import urandom
 app.config["SECRET_KEY"] = urandom(32)
@@ -29,4 +36,5 @@ login_manager.login_message = "Kirjaudu sisään"
 def load_user(user_id):
     return Kayttaja.query.get(user_id)
 
+# luo tietokannat
 db.create_all()

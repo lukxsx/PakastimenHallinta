@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('kaappi_lisaaja') }}">
+    <table>
+        <tr>
+            <td>
+                {{ form.nimi.label }}
+            </td>
+            <td>
+                {{ form.nimi }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.nimi.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.tasoja.label }}
+            </td>
+            <td>
+                {{ form.tasoja }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.tasoja.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Lisää kaappi tietokantaan"/>
+            </td>
+        </tr>
+    </table>
+</form>
+{% endblock %}
