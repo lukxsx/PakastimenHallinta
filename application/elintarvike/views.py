@@ -24,6 +24,13 @@ def elintarvike_paivitys(elintarvike_id):
     db.session.commit()
     return redirect(url_for("elintarvike_listaus"))
 
+@app.route("/elintarvikkeet/poista/<elintarvike_id>/", methods=["POST"])
+@login_required
+def elintarvike_poisto(elintarvike_id):
+    elin = Elintarvike.query.get(elintarvike_id)
+    db.session.delete(elin)
+    db.session.commit()
+    return redirect(url_for("elintarvike_listaus"))
 
 @app.route("/elintarvikkeet/", methods=["POST"])
 @login_required

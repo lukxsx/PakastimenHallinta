@@ -6,6 +6,7 @@
         <th>Elintarvike</th>
         <th>Säilyvyys päivinä</th>
         <th>Päivitä säilyvyys</th>
+        <th>Poista</th>
     </tr>
     {% for elintarvike in elintarvikkeet %}
     <tr>
@@ -15,6 +16,11 @@
             <form method="POST" action="{{ url_for('elintarvike_paivitys', elintarvike_id=elintarvike.id) }}">
                 <input type="text" name="uusi"/>
                 <input type="submit" value="Päivitä säilyvyys"/>
+            </form>
+        </td>
+        <td>
+            <form method="POST" action="{{ url_for('elintarvike_poisto', elintarvike_id=elintarvike.id) }}">
+                <input type="submit" value="Poista"/>
             </form>
         </td>
     </tr>
