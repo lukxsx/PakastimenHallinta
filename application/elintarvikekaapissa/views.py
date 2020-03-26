@@ -32,4 +32,4 @@ def ek_lisaaja():
 @app.route("/ek/", methods=["GET"])
 @login_required
 def ek_listaus():
-    return render_template("ek/listaa.html", ek=Elintarvike.query.all())
+    return render_template("elintarvikekaapissa/listaa.html", ek=ElintarvikeKaapissa.query.all(), elin=Elintarvike, kaap=Kaappi)

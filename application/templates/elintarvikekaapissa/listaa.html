@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<table>
+    <tr>
+        <th>Elintarvike</th>
+        <th>Kaappi</th>
+        <th>Taso</th>
+        <th>Määrä</th>
+    </tr>
+    {% for e in ek %}
+    <tr>
+        <td>{{ elin.query.get(e.elintarvike_id).nimi }}</td>
+        <td>{{ kaap.query.get(e.kaappi_id).nimi }}</td>
+        <td>{{ e.taso }}</td>
+        <td>{{ e.maara }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
