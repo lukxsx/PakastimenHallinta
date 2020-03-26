@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, url_for
+from flask_login import login_user, logout_user
 from application import app
-from application.auth.models import User
+from application.auth.models import Kayttaja
 from application.auth.forms import LoginForm
 
 @app.route("/auth/kirjaudu", methods = ["GET", "POST"])
@@ -10,11 +11,15 @@ def kirjautuminen():
 
     form = LoginForm(request.form)
 
-    user = User.query.filter_by(username=form.username.data, password=form.password.data).first()
+    user = Kayttaja.query.filter_by(tunnus=form.tunnus.data, salasana=form.salasana.data).first()
     if not user:
         return render_template("auth/loginform.html", form = form,
                                error = "Väärä käyttäjätunnus tai salasana")
 
+    login_user(user)
+    return redirect(url_for("index"))
 
-    print("Käyttäjä " + user.name + " tunnistettiin")
-    return redirect(url_for("elintarvike_listaus"))
+@app.route("/auth/ulos")
+def uloskirjautuminen():
+    logout_user()
+    return redirect(url_for("index"))

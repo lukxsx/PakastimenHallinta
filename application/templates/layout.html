@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Pakastimenhallinta</title>
-	</head>
+<head>
+    <meta charset="utf-8">
+    <title>Pakastimenhallinta</title>
+</head>
 
-	<body>
-		<ul>
-			<li><a href="{{ url_for('elintarvike_listaus') }}">Listaa elintarvikkeet</a></li>
-			<li><a href="{{ url_for('elintarvike_lisays') }}">Lisää elintarvike</a></li>
-			<li><a href="{{ url_for('kirjautuminen') }}">Kirjaudu sisään</a></li>
-
-		</ul>
-		{% block body %}
-		<p>sisältöä</p>
-		{% endblock %}
-	</body>
+<body>
+{% if current_user.is_authenticated %}
+<p>Käyttäjä: {{ current_user.name }}</p>
+<p><a href="{{ url_for('uloskirjautuminen') }}">Kirjaudu ulos</a></p>
+{% else %}
+<a href="{{ url_for('kirjautuminen') }}">Kirjaudu</a>
+{% endif %}
+<ul>
+    <li><a href="{{ url_for('elintarvike_listaus') }}">Listaa elintarvikkeet</a></li>
+    <li><a href="{{ url_for('elintarvike_lisays') }}">Lisää elintarvike</a></li>
+</ul>
+{% block body %}
+<p>sisältöä</p>
+{% endblock %}
+</body>
 </html>

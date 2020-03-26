@@ -1,7 +1,7 @@
 from application import db
 
 
-class User(db.Model):
+class Kayttaja(db.Model):
     __tablename__ = "kayttaja"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -9,14 +9,14 @@ class User(db.Model):
     date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
                               onupdate=db.func.current_timestamp())
 
-    name = db.Column(db.String(144), nullable=False)
-    username = db.Column(db.String(144), nullable=False)
-    password = db.Column(db.String(144), nullable=False)
+    nimi = db.Column(db.String(144), nullable=False)
+    tunnus = db.Column(db.String(144), nullable=False)
+    salasana = db.Column(db.String(144), nullable=False)
 
-    def __init__(self, name, username, password):
-        self.name = name
-        self.username = username
-        self.password = password
+    def __init__(self, nimi, tunnus, salasana):
+        self.nimi = nimi
+        self.tunnus = tunnus
+        self.salasana = salasana
 
     def get_id(self):
         return self.id
