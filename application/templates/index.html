@@ -1,5 +1,18 @@
 {% extends "layout.html" %}
 
 {% block body %}
+{% if kaappisisalto is defined %}
+<p>
+  Kaappien sisältö:
+</p>
 
+<ul>
+  {% for k in kaappisisalto %}
+  <li>
+    {{k.kaappi}}: {{k.el}} kpl
+  </li>
+  {% endfor %}
+</ul>
+
+{% endif %}
 {% endblock %}
