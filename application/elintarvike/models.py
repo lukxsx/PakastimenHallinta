@@ -1,7 +1,7 @@
 from application import db
+from application.models import Base
 
-
-class Elintarvike(db.Model):
+class Elintarvike(Base):
     id = db.Column(db.Integer, primary_key=True)
     nimi = db.Column(db.String(144), nullable=False)
     sailyvyys = db.Column(db.Integer, nullable=False)

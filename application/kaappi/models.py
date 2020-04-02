@@ -1,7 +1,8 @@
 from application import db
+from application.models import Base
 
 
-class Kaappi(db.Model):
+class Kaappi(Base):
     id = db.Column(db.Integer, primary_key=True)
     nimi = db.Column(db.String(144), nullable=False)
     tasoja = db.Column(db.Integer, nullable=False)

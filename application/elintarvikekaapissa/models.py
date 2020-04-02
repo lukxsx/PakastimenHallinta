@@ -1,7 +1,8 @@
 from application import db
+from application.models import Base
 
 
-class ElintarvikeKaapissa(db.Model):
+class ElintarvikeKaapissa(Base):
     id = db.Column(db.Integer, primary_key=True)
     taso = db.Column(db.Integer, nullable=False)
     maara = db.Column(db.Integer, nullable=False)
