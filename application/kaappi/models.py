@@ -15,7 +15,8 @@ class Kaappi(Base):
 
     @staticmethod
     def kaappisisalto():
-        kysely = text("SELECT kaappi.nimi, COUNT(elintarvike_kaapissa.id) FROM elintarvike_kaapissa"
+        kysely = text("SELECT kaappi.nimi, SUM(elintarvike_kaapissa.maara)"
+                      " FROM elintarvike_kaapissa"
                       " LEFT JOIN kaappi ON elintarvike_kaapissa.kaappi_id=kaappi.id"
                       " GROUP BY kaappi.nimi")
         tulos = db.engine.execute(kysely)

@@ -3,7 +3,7 @@
 {% block body %}
 <h2>Lisää elintarvike kaappiin</h2>
 <form method="POST" action="{{ url_for('ek_lisaaja') }}">
-<table>
+    <table>
         <tr>
             <td>
                 {{ form.elintarvike.label }}
@@ -19,7 +19,7 @@
                 </ul>
             </td>
         </tr>
-    <tr>
+        <tr>
             <td>
                 {{ form.kaappi.label }}
             </td>
@@ -34,7 +34,7 @@
                 </ul>
             </td>
         </tr>
-    <tr>
+        <tr>
             <td>
                 {{ form.taso.label }}
             </td>
@@ -49,7 +49,7 @@
                 </ul>
             </td>
         </tr>
-    <tr>
+        <tr>
             <td>
                 {{ form.maara.label }}
             </td>
