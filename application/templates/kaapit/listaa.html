@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body %}
+<h2>Kaapit</h2>
 <table>
     <tr>
         <th>Kaappi</th>
@@ -19,5 +20,6 @@
         </td>
     </tr>
     {% endfor %}
+    <a href="{{ url_for('kaappi_lisays') }}">Lisää kaappi</a>
 </table>
 {% endblock %}
