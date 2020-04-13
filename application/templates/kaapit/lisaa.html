@@ -19,21 +19,7 @@
                 </ul>
             </td>
         </tr>
-        <tr>
-            <td>
-                {{ form.tasoja.label }}
-            </td>
-            <td>
-                {{ form.tasoja }}
-            </td>
-            <td>
-                <ul>
-                    {% for error in form.tasoja.errors %}
-                    <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-            </td>
-        </tr>
+
         <tr>
             <td colspan="2">
                 <input type="submit" value="Lisää kaappi tietokantaan"/>

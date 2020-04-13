@@ -17,15 +17,6 @@ def kaappi_lisays():
     return render_template("kaapit/lisaa.html", form = KaappiForm())
 
 
-@app.route("/kaapit/<kaappi_id>/", methods=["POST"])
-@login_required
-def kaappi_paivitys(kaappi_id):
-    k = Kaappi.query.get(kaappi_id)
-    k.tasoja = request.form.get("uusi")
-    db.session.commit()
-    return redirect(url_for("kaappi_listaus"))
-
-
 @app.route("/kaapit/", methods=["POST"])
 @login_required
 def kaappi_lisaaja():
@@ -33,7 +24,7 @@ def kaappi_lisaaja():
     if not form.validate():
         return render_template("kaapit/lisaa.html", form = form)
 
-    k = Kaappi(form.nimi.data, form.tasoja.data)
+    k = Kaappi(form.nimi.data)
     db.session().add(k)
     db.session().commit()
 

@@ -38,7 +38,7 @@ def elintarvike_poisto(elintarvike_id):
 def elintarvike_lisaaja():
     form = ElintarvikeForm(request.form)
     if not form.validate():
-        return render_template("elintarvike/lisaa.html", form = form)
+        return render_template("elintarvikkeet/lisaa.html", form = form)
 
     e = Elintarvike(form.nimi.data, form.sailyvyys.data)
     db.session().add(e)
