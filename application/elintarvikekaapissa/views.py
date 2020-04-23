@@ -22,8 +22,9 @@ def ek_lisaaja():
     k = form.kaappi.data.id
     taso = form.taso.data
     maara = form.maara.data
+    laitettu = form.laitettu.data
     
-    ek = ElintarvikeKaapissa(e, k, taso, maara)
+    ek = ElintarvikeKaapissa(e, k, taso, maara, laitettu)
     db.session.add(ek)
     db.session.commit()
 

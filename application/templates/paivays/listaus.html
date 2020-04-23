@@ -7,14 +7,16 @@
         <th>Elintarvike</th>
         <th>Kaappi</th>
         <th>Taso</th>
-        <th>Laitettu kaappiin</th>
+        <th>Vanhentunut</th>
+        <th>Päivää vanhenemisesta</th>
     </tr>
     {% for vanhentunut in lista %}
     <tr>
-        <td>{{ elin.query.get(vanhentunut.elintarvike_id).nimi }}</td>
-        <td>{{ kaap.query.get(vanhentunut.kaappi_id).nimi }}</td>
-        <td>{{ vanhentunut.taso }}</td>
-        <td>{{ vanhentunut.laitettu_kaappiin }}</td>
+        <td>{{ elin.query.get(vanhentunut.ek.elintarvike_id).nimi }}</td>
+        <td>{{ kaappi.query.get(vanhentunut.ek.kaappi_id).nimi }}</td>
+        <td>{{ vanhentunut.ek.taso }}</td>
+        <td>{{ vanhentunut.tulostaVanhentunutPvm() }}</td>
+        <td>{{ vanhentunut.paivia }}</td>
     </tr>
     {% endfor %}
 </table>

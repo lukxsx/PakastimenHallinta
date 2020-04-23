@@ -65,6 +65,21 @@
             </td>
         </tr>
         <tr>
+            <td>
+                {{ form.laitettu.label }}
+            </td>
+            <td>
+                {{ form.laitettu }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.laitettu.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
             <td colspan="2">
                 <input type="submit" value="Lisää elintarvike tietokantaan"/>
             </td>
