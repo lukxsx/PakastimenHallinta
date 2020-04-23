@@ -1,6 +1,10 @@
 # Käyttöohje
 Sovellus pitää olla asennettuna / käynnistettynä ennen käyttöä. Katso [asennusohje](asennusohje.md).
 
+Sovelluksen toiminnallisuus perustuu kolmeen käsitteeseen: kaappeihin, elintarviketyyppeihin ja elintarvikkeisiin kaapissa. Jotta sovellusta voi käyttää, on luotava ensin vähintään yksi kaappeja. Kaappeja voi luoda useampia, esimerkiksi pakastinta ja jääkaappia vastaavat kaapit. Seuraavaksi määritellään elintarviketyypit. Elintarviketyypille on määritelty nimi ja säilyvyysaika päivinä. Voit luoda esimerkiksi elintarviketyypin "Maito" ja antaa sille säilymisajaksi 7 päivää. Tämän jälkeen eri elintarviketyyppien mukaisia elintarvikkeita voi alkaa lisäämään kaappeihin. Elintarviketta lisättäessä kaappiin sille määritellään kaappiin laittopäivä, jonka perusteella lasketaan elintarvikkeen vanheneminen. Elintarvikettä lisättäessä kaappiin määritellään myös taso ja elintarvikkeen määrä. Taso kertoo, että millä hyllyllä kaapissa kyseinen elintarvike on.
+
+Kun elintarvikkeet on lisätty kaappiin, voidaan tarkastella elintarvikkeiden vanhenemista "Vanhentuneet elintarvikkeet" -sivulta. Elintarvike päätyy sivulle, kun sen kaappiin laittopäivä yhteenlaskettuna elintarviketyypin säilyvyyden kanssa on vanhempi, kuin tällä hetkellä oleva päivämäärä.  
+
 ## Käyttäjän luonti
 Klikkaa oikeasta yläkulmasta "Rekisteröidy". Syötä haluttu käyttäjätunnus ja salasana
 
@@ -8,7 +12,7 @@ Klikkaa oikeasta yläkulmasta "Rekisteröidy". Syötä haluttu käyttäjätunnus
 Klikkaa oikeasta yläkulmasta "Kirjaudu". Syötä käyttäjätunnus ja salasana.
 
 ## Kaapin lisääminen
-Valitse yläpalkista "Kaapit". Paina näkymässä linkkiä "Lisää kaappi". Anna kaapille nimi, esim. jääkaappi, pakastin tjsp. 
+Valitse yläpalkista "Kaapit". Paina näkymässä linkkiä "Lisää kaappi". Anna kaapille nimi. 
 
 ## Elintarviketyypin lisääminen
 Valitse yläpalkista "Elintarviketyypit". Paina näkymässä linkkiä "Lisää elintarviketyyppi". Anna elintarvikkeen nimi ja
