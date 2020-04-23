@@ -11,13 +11,16 @@
 * ```SELECT elintarvike.id, elintarvike.nimi, elintarvike.sailyvyys FROM elintarvike```
 - [x] Elintarviketyypin tietojen päivittäminen (säilyvyys)
 * _haetaan päivitettävä elintarvike_ ```SELECT elintarvike.id, elintarvike.nimi, elintarvike.sailyvyys FROM elintarvike WHERE elintarvike.id = ?```
-* ```UPDATE elintarvike SET sailyvyys=? WHERE elintarvike.id = ?```
+* _päivitetään säilyvyys_ ```UPDATE elintarvike SET sailyvyys=? WHERE elintarvike.id = ?```
 - [x] Elintarviketyypin poistaminen
+* _haetaan poistettava elintarviketyyppi_ ```SELECT elintarvike.id, elintarvike.nimi, elintarvike.sailyvyys FROM elintarvike WHERE elintarvike.id = ?```
 * _Tarkistetaan, voidaanko elintarviketyyppi poistaa_ ```SELECT elintarvike_kaapissa.id, elintarvike_kaapissa.taso, elintarvike_kaapissa.maara, elintarvike_kaapissa.laitettu_kaappiin, elintarvike_kaapissa.elintarvike_id, elintarvike_kaapissa.kaappi_id FROM elintarvike_kaapissa WHERE elintarvike_kaapissa.elintarvike_id = ?```
-* ```DELETE FROM elintarvike WHERE elintarvike.id = ?```
+* _poistetaan elintarviketyyppi_ ```DELETE FROM elintarvike WHERE elintarvike.id = ?```
 - [x] Elintarvikkeen lisääminen kaappiin
 * ```INSERT INTO elintarvike_kaapissa (taso, maara, laitettu_kaappiin, elintarvike_id, kaappi_id) VALUES (?, ?, ?, ?, ?)```
-- [ ] Elintarvikkeiden poistaminen kaapista
+- [x] Elintarvikkeiden poistaminen kaapista
+* _haetaan poistettava elintarvike_ ```SELECT elintarvike_kaapissa.id, elintarvike_kaapissa.taso, elintarvike_kaapissa.maara, elintarvike_kaapissa.laitettu_kaappiin, elintarvike_kaapissa.elintarvike_id, elintarvike_kaapissa.kaappi_id FROM elintarvike_kaapissa WHERE elintarvike_kaapissa.id = ?```
+* _poistetaan elintarvike kaapista_ ```DELETE FROM elintarvike_kaapissa WHERE elintarvike_kaapissa.id = ?```
 - [x] Kaapissa olevien elintarvikkeiden listaus
 * ```SELECT elintarvike_kaapissa.id, elintarvike_kaapissa.taso, elintarvike_kaapissa.maara, elintarvike_kaapissa.laitettu_kaappiin, elintarvike_kaapissa.elintarvike_id, elintarvike_kaapissa.kaappi_id FROM elintarvike_kaapissa```
 * ```SELECT elintarvike.id, elintarvike.nimi, elintarvike.sailyvyys FROM elintarvike WHERE elintarvike.id = ?```
