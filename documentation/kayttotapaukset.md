@@ -22,3 +22,5 @@
 * ```SELECT elintarvike_kaapissa.id, elintarvike_kaapissa.taso, elintarvike_kaapissa.maara, elintarvike_kaapissa.laitettu_kaappiin, elintarvike_kaapissa.elintarvike_id, elintarvike_kaapissa.kaappi_id FROM elintarvike_kaapissa```
 * ```SELECT elintarvike.id AS elintarvike_id, elintarvike.nimi AS elintarvike_nimi, elintarvike.sailyvyys AS elintarvike_sailyvyys FROM elintarvike WHERE elintarvike.id = ? LIMIT ? OFFSET ?```
 * ```SELECT kaappi.id AS kaappi_id, kaappi.nimi AS kaappi_nimi FROM kaappi WHERE kaappi.id = ?```
+- [x] Etusivun tilastokysely, elintarvikkeiden määrä kaapeissa
+* ```SELECT kaappi.nimi, SUM(elintarvike_kaapissa.maara) FROM elintarvike_kaapissa LEFT JOIN kaappi ON elintarvike_kaapissa.kaappi_id=kaappi.id GROUP BY kaappi.nimi```
