@@ -17,7 +17,7 @@ class Vanhentunut:
         return "" + str(self.pvm.day) + "." + str(self.pvm.month) + "." + str(self.pvm.year)
 
 @app.route("/paivays", methods=["GET"])
-def vanhentuvat():
+def vanhentuneet():
     today = datetime.date.today()
     ek = ElintarvikeKaapissa.query.all()
     vanhentuneet = []
