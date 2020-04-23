@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h2>Vanhentuneet elintarvikkeet</h2>
+<table>
+    <tr>
+        <th>Elintarvike</th>
+        <th>Kaappi</th>
+        <th>Taso</th>
+        <th>Laitettu kaappiin</th>
+    </tr>
+    {% for vanhentunut in lista %}
+    <tr>
+        <td>{{ elin.query.get(vanhentunut.elintarvike_id).nimi }}</td>
+        <td>{{ kaap.query.get(vanhentunut.kaappi_id).nimi }}</td>
+        <td>{{ vanhentunut.taso }}</td>
+        <td>{{ vanhentunut.laitettu_kaappiin }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

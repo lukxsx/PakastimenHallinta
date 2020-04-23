@@ -26,6 +26,9 @@ from application.elintarvikekaapissa import models, views
 # kaapit
 from application.kaappi import models, views
 
+# paivays
+from application.paivays import views
+
 # kirjautuminen
 from application.auth import models, views
 from application.auth.models import Kayttaja
