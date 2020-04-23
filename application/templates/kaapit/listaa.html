@@ -2,11 +2,11 @@
 
 {% block body %}
     <h2>Kaapit</h2>
+    <p><a href="{{ url_for('kaappi_lisays') }}">Lisää kaappi</a></p>
     <ul class="list-group list-group-flush">
         {% for kaappi in kaapit %}
             <li class="list-group-item">{{ kaappi.nimi }}</li>
             </ul>
         {% endfor %}
-    <a href="{{ url_for('kaappi_lisays') }}">Lisää kaappi</a>
     </table>
 {% endblock %}
