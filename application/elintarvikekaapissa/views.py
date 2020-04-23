@@ -16,7 +16,7 @@ def ek_lisays():
 def ek_lisaaja():
     form = EKForm(request.form)
     if not form.validate():
-        return render_template("elintarvike/lisaa.html", form = form)
+        return render_template("elintarvikekaapissa/lisaa.html", form = form)
     
     e = form.elintarvike.data.id
     k = form.kaappi.data.id
@@ -29,6 +29,15 @@ def ek_lisaaja():
     db.session.commit()
 
     return redirect(url_for("ek_listaus"))
+
+@app.route("/ek/poista/<ek_id>/", methods=["POST"])
+@login_required
+def ek_poistaja(ek_id):
+    poistettava = ElintarvikeKaapissa.query.get(ek_id)
+    db.session.delete(poistettava)
+    db.session.commit()
+    return redirect(url_for("ek_listaus"))
+
 
 @app.route("/ek/", methods=["GET"])
 @login_required

@@ -1,22 +1,28 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<h2>Elintarvikkeet kaapeissa</h2>
+    <h2>Elintarvikkeet kaapeissa</h2>
     <p><a href="{{ url_for('ek_lisays') }}">Lisää elintarvike kaappiin</a></p>
-<table class="table">
-    <tr>
-        <th>Elintarvike</th>
-        <th>Kaappi</th>
-        <th>Taso</th>
-        <th>Määrä</th>
-    </tr>
-    {% for e in ek %}
-    <tr>
-        <td>{{ elin.query.get(e.elintarvike_id).nimi }}</td>
-        <td>{{ kaap.query.get(e.kaappi_id).nimi }}</td>
-        <td>{{ e.taso }}</td>
-        <td>{{ e.maara }}</td>
-    </tr>
-    {% endfor %}
-</table>
+    <table class="table">
+        <tr>
+            <th>Elintarvike</th>
+            <th>Kaappi</th>
+            <th>Taso</th>
+            <th>Määrä</th>
+            <th>Poista</th>
+        </tr>
+        {% for e in ek %}
+            <tr>
+                <td>{{ elin.query.get(e.elintarvike_id).nimi }}</td>
+                <td>{{ kaap.query.get(e.kaappi_id).nimi }}</td>
+                <td>{{ e.taso }}</td>
+                <td>{{ e.maara }}</td>
+                <td>
+                    <form method="POST" action="{{ url_for('ek_poistaja', ek_id=e.id) }}">
+                        <input type="submit" class="btn btn-primary" value="Poista"/>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
