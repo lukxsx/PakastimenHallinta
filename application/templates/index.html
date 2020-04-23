@@ -11,9 +11,9 @@
                 <p>
                     Kaappien sisältö:
                 </p>
-                <ul>
+                <ul class="list-group list-group-flush">
                     {% for k in kaappisisalto %}
-                        <li>
+                        <li class="list-group-item">
                             {{ k.kaappi }}: {{ k.el }} kpl
                         </li>
                     {% endfor %}

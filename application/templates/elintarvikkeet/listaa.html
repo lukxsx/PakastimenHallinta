@@ -2,8 +2,8 @@
 
 {% block body %}
 <h2>Elintarviketyypit</h2>
-<li><a href="{{ url_for('elintarvike_lisays') }}">Lisää elintarviketyyppi</a></li>
-<table>
+<p><a href="{{ url_for('elintarvike_lisays') }}">Lisää elintarviketyyppi</a></p>
+<table class="table">
     <tr>
         <th>Elintarvike</th>
         <th>Säilyvyys päivinä</th>
@@ -16,13 +16,13 @@
         <td>{{ elintarvike.sailyvyys }}</td>
         <td>
             <form method="POST" action="{{ url_for('elintarvike_paivitys', elintarvike_id=elintarvike.id) }}">
-                <input type="text" name="uusi"/>
-                <input type="submit" value="Päivitä säilyvyys"/>
+                <input type="text" class="form-control" name="uusi"/>
+                <input type="submit" class="btn btn-primary" value="Päivitä säilyvyys"/>
             </form>
         </td>
         <td>
             <form method="POST" action="{{ url_for('elintarvike_poisto', elintarvike_id=elintarvike.id) }}">
-                <input type="submit" value="Poista"/>
+                <input type="submit" class="btn btn-primary" value="Poista"/>
             </form>
         </td>
     </tr>

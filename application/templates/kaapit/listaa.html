@@ -1,16 +1,12 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<h2>Kaapit</h2>
-<table>
-    <tr>
-        <th>Kaappi</th>
-    </tr>
-    {% for kaappi in kaapit %}
-    <tr>
-        <td>{{ kaappi.nimi }}</td>
-    </tr>
-    {% endfor %}
+    <h2>Kaapit</h2>
+    <ul class="list-group list-group-flush">
+        {% for kaappi in kaapit %}
+            <li class="list-group-item">{{ kaappi.nimi }}</li>
+            </ul>
+        {% endfor %}
     <a href="{{ url_for('kaappi_lisays') }}">Lisää kaappi</a>
-</table>
+    </table>
 {% endblock %}
