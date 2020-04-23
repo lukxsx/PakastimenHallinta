@@ -9,8 +9,8 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-    <a class="navbar-brand" href="/">Pakastimenhallinta</a>
+<nav class="navbar navbar-light navbar-expand-lg" style="background-color: #e3f2fd;">
+    <a class="navbar-brand">Pakastimenhallinta</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -20,7 +20,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('index') }} ">Etusivu</a>
             </li>
-             <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('vanhentuneet') }} ">Vanhentuneet elintarvikkeet</a>
             </li>
             <li class="nav-item">
@@ -32,23 +32,28 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('elintarvike_listaus') }} ">Elintarviketyypit</a>
             </li>
-        </ul>
-        <div class="form-inline mt-2 mt-md-0">
             {% if current_user.is_authenticated %}
-            Kirjautuneena sisään: {{ current_user.tunnus }} <a href="{{ url_for('uloskirjautuminen') }}">Kirjaudu
-            ulos</a>
+                <span class="navbar-text">Kirjautuneena sisään: {{ current_user.tunnus }}</span>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('uloskirjautuminen') }} ">Kirjaudu ulos</a>
+                </li>
             {% else %}
-            <a href="{{ url_for('kirjautuminen') }}">Kirjaudu</a>
-            <a href="{{ url_for('kayttajan_luonti') }}">Rekisteröidy</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('kirjautuminen') }} ">Kirjaudu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('kayttajan_luonti') }} ">Rekisteröidy</a>
+                </li>
             {% endif %}
-        </div>
+        </ul>
+    </div>
     </div>
 </nav>
 <main role="main" class="container">
     {% block body %}
-    <p>
-        sisältö
-    </p>
+        <p>
+            sisältö
+        </p>
     {% endblock %}
 </main>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
