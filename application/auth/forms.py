@@ -11,7 +11,7 @@ class LoginForm(FlaskForm):
 
 
 class CreateAccount(FlaskForm):
-    tunnus = StringField("Käyttäjätunnus: ", [validators.InputRequired(), validators.Length(min=4, max=10)])
+    tunnus = StringField("Käyttäjätunnus", [validators.InputRequired(), validators.Length(min=4, max=10)])
     salasana = PasswordField('Salasana', [validators.InputRequired(), validators.Length(min=5, max=16),
                                           validators.EqualTo('varmistus', message='Salasanat eivät täsmää!')])
     varmistus = PasswordField('Salasanan uudestaan')
