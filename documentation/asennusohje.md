@@ -23,11 +23,11 @@ python run.py
 ## Heroku
 Vaatii Herokun CLI-työkalun ja sovelluksen git-reposition
 ```
-heroku create _haluttu nimi tähän_
+heroku create <haluttu nimi>
 ```
 Liitetään git-repositioon Heroku
 ```
-git remote add heroku _herokusta saatu git-osoite_
+git remote add heroku <herokusta saatu git-osoite>
 ```
 Pushataan Herokuun
 ```
