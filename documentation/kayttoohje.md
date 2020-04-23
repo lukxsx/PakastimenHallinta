@@ -1,4 +1,5 @@
 # Käyttöohje
+Sovellus pitää olla asennettuna / käynnistettynä ennen käyttöä. Katso [asennusohje](asennusohje.md).
 
 ## Käyttäjän luonti
 Klikkaa oikeasta yläkulmasta "Rekisteröidy". Syötä haluttu käyttäjätunnus ja salasana
