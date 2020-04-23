@@ -11,6 +11,9 @@
 * ```SELECT elintarvike.id, elintarvike.nimi, elintarvike.sailyvyys FROM elintarvike```
 - [x] Elintarviketyypin tietojen päivittäminen (säilyvyys)
 * ```UPDATE elintarvike SET sailyvyys=? WHERE elintarvike.id = ?```
+- [x] Elintarviketyypin poistaminen
+* _Tarkistetaan, voidaanko elintarviketyyppi poistaa_ ```SELECT elintarvike_kaapissa.id, elintarvike_kaapissa.taso, elintarvike_kaapissa.maara, elintarvike_kaapissa.laitettu_kaappiin, elintarvike_kaapissa.elintarvike_id, elintarvike_kaapissa.kaappi_id FROM elintarvike_kaapissa WHERE elintarvike_kaapissa.elintarvike_id = ?```
+* ```DELETE FROM elintarvike WHERE elintarvike.id = ?```
 - [x] Elintarvikkeen lisääminen kaappiin
 * ```INSERT INTO elintarvike_kaapissa (taso, maara, laitettu_kaappiin, elintarvike_id, kaappi_id) VALUES (?, ?, ?, ?, ?)```
 - [ ] Elintarvikkeiden poistaminen kaapista
