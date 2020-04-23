@@ -1,8 +1,9 @@
 from flask import render_template, request, redirect, url_for
 from flask_login import login_user, logout_user
+
 from application import app, db
-from application.auth.models import Kayttaja
 from application.auth.forms import LoginForm, CreateAccount
+from application.auth.models import Kayttaja
 
 
 @app.route("/auth/kirjaudu", methods=["GET", "POST"])
