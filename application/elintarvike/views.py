@@ -2,13 +2,13 @@ from application import app, db
 from flask import redirect, render_template, request, url_for
 from flask_login import login_required
 from application.elintarvike.models import Elintarvike
-from application.elintarvike.forms import ElintarvikeForm
+from application.elintarvike.forms import ElintarvikeForm, PaivitysForm
 
 
 @app.route("/elintarvikkeet", methods=["GET"])
 @login_required
 def elintarvike_listaus():
-    return render_template("elintarvikkeet/listaa.html", elintarvikkeet=Elintarvike.query.all())
+    return render_template("elintarvikkeet/listaa.html", elintarvikkeet=Elintarvike.query.all(), pform=PaivitysForm())
 
 
 @app.route("/elintarvikkeet/lisaa/")

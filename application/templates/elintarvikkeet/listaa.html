@@ -16,7 +16,7 @@
         <td>{{ elintarvike.sailyvyys }}</td>
         <td>
             <form method="POST" action="{{ url_for('elintarvike_paivitys', elintarvike_id=elintarvike.id) }}">
-                <input type="text" class="form-control" name="uusi"/>
+                {{ pform.uusi(class="form-control") }}
                 <input type="submit" class="btn btn-primary" value="Päivitä säilyvyys"/>
             </form>
         </td>
