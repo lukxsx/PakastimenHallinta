@@ -2,6 +2,7 @@ from application import app, db
 from flask import redirect, render_template, request, url_for
 from flask_login import login_required
 from application.elintarvike.models import Elintarvike
+from application.elintarvikekaapissa.models import ElintarvikeKaapissa
 from application.elintarvike.forms import ElintarvikeForm, PaivitysForm
 
 
@@ -29,8 +30,12 @@ def elintarvike_paivitys(elintarvike_id):
 @login_required
 def elintarvike_poisto(elintarvike_id):
     elin = Elintarvike.query.get(elintarvike_id)
-    db.session.delete(elin)
-    db.session.commit()
+    ek = ElintarvikeKaapissa.query.filter_by(elintarvike_id=elintarvike_id).first()
+    if ek is None:
+        db.session.delete(elin)
+        db.session.commit()
+    else:
+        return render_template("error.html", errormessage="VIRHE: Elintarviketyyppiä, joka on kaapissa ei voida poistaa.")
     return redirect(url_for("elintarvike_listaus"))
 
 @app.route("/elintarvikkeet/", methods=["POST"])

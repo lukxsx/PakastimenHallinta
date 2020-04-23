@@ -33,7 +33,7 @@
                 <a class="nav-link" href="{{ url_for('elintarvike_listaus') }} ">Elintarviketyypit</a>
             </li>
             {% if current_user.is_authenticated %}
-                <span class="navbar-text">Kirjautuneena sisään: {{ current_user.tunnus }}</span>
+                <span class="navbar-text">Kirjautuneena sisään: <b>{{ current_user.tunnus }}</b></span>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('uloskirjautuminen') }} ">Kirjaudu ulos</a>
                 </li>
