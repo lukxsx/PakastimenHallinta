@@ -29,6 +29,15 @@ Liitetään git-repositioon Heroku
 ```
 git remote add heroku <herokusta saatu git-osoite>
 ```
+Asetetaan Herokun HEROKU-ympäristömuuttujan arvoksi 1, että sovellus tietää
+että käytetään nyt Herokua.
+```
+heroku config:set HEROKU=1
+```
+Luodaan sovellukselle PostgreSQL-tietokanta Herokuun
+```
+heroku addons:add heroku-postgresql:hobby-dev
+```
 Pushataan Herokuun
 ```
 git push heroku master
