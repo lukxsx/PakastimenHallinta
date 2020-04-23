@@ -1,31 +1,18 @@
 {% extends "layout.html" %}
 
 {% block body %}
-{{ error }}
-<form method="POST" action="{{ url_for('kirjautuminen') }}">
-    <h2>Kirjaudu sisään</h2>
-    <table>
-        <tr>
-            <td>
-                {{ form.tunnus.label }}
-            </td>
-            <td>
-                {{ form.tunnus }}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                {{ form.salasana.label }}
-            </td>
-            <td>
-                {{ form.salasana }}
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input type="submit" value="Kirjaudu sisään"/>
-            </td>
-        </tr>
-    </table>
-</form>
+    {{ error }}
+    <form method="POST" action="{{ url_for('kirjautuminen') }}">
+        <h2>Kirjaudu sisään</h2>
+
+        <div class="form-group">
+            <label for="tunnus">{{ form.tunnus.label }}</label>
+            {{ form.tunnus(class="form-control", id="formGroupExampleInput") }}
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">{{ form.salasana.label }}</label>
+            {{ form.salasana(class="form-control", id="exampleInputPassword1") }}
+        </div>
+        <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
+    </form>
 {% endblock %}
