@@ -21,7 +21,7 @@ python run.py
 ```
 
 ## Heroku
-Vaatii Herokun CLI-työkalun ja sovelluksen git-reposition
+Vaatii Herokun CLI-työkalun ja tunnukset.
 ```
 heroku create <haluttu nimi>
 ```
