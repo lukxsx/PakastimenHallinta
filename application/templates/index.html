@@ -1,19 +1,26 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<h2>Tilastoja</h2>
-{% if kaappisisalto is defined %}
-<p>
-  Kaappien sisältö:
-</p>
+    {% if current_user.is_authenticated %}
+        <h2>Tilastoja</h2>
+        {% if kaappisisalto is defined %}
 
-<ul>
-  {% for k in kaappisisalto %}
-  <li>
-    {{k.kaappi}}: {{k.el}} kpl
-  </li>
-  {% endfor %}
-</ul>
-
-{% endif %}
+            {% if not kaappisisalto %}
+                <p><i>Kaikki kaapit ovat tyhjiä :(</i></p>
+            {% else %}
+                <p>
+                    Kaappien sisältö:
+                </p>
+                <ul>
+                    {% for k in kaappisisalto %}
+                        <li>
+                            {{ k.kaappi }}: {{ k.el }} kpl
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endif %}
+    {% else %}
+        <p>Kirjaudu sisään, ole hyvä</p>
+    {% endif %}
 {% endblock %}
