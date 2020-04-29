@@ -4,4 +4,4 @@ from application.kaappi.models import Kaappi
 
 @app.route("/")
 def index():
-    return render_template("index.html", kaappisisalto = Kaappi.kaappisisalto())
+    return render_template("index.html", kaappisisalto = Kaappi.kaappisisalto(), tyhjat = Kaappi.tyhjatkaapit())

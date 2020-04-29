@@ -1,23 +1,29 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<h2>Vanhentuneet elintarvikkeet</h2>
-<table class="table">
-    <tr>
-        <th>Elintarvike</th>
-        <th>Kaappi</th>
-        <th>Taso</th>
-        <th>Vanhentunut</th>
-        <th>Päivää vanhenemisesta</th>
-    </tr>
-    {% for vanhentunut in lista %}
-    <tr>
-        <td>{{ elin.query.get(vanhentunut.ek.elintarvike_id).nimi }}</td>
-        <td>{{ kaappi.query.get(vanhentunut.ek.kaappi_id).nimi }}</td>
-        <td>{{ vanhentunut.ek.taso }}</td>
-        <td>{{ vanhentunut.tulostaVanhentunutPvm() }}</td>
-        <td>{{ vanhentunut.paivia }}</td>
-    </tr>
-    {% endfor %}
-</table>
+    <h2>Vanhentuneet elintarvikkeet</h2>
+    <table class="table">
+        <tr>
+            <th>Elintarvike</th>
+            <th>Kaappi</th>
+            <th>Taso</th>
+            <th>Vanhentunut</th>
+            <th>Päivää vanhenemisesta</th>
+            <th>Poista</th>
+        </tr>
+        {% for vanhentunut in lista %}
+            <tr>
+                <td>{{ elin.query.get(vanhentunut.ek.elintarvike_id).nimi }}</td>
+                <td>{{ kaappi.query.get(vanhentunut.ek.kaappi_id).nimi }}</td>
+                <td>{{ vanhentunut.ek.taso }}</td>
+                <td>{{ vanhentunut.tulostaVanhentunutPvm() }}</td>
+                <td>{{ vanhentunut.paivia }}</td>
+                <td>
+                    <form method="POST" action="{{ url_for('vanhentuneen_poistaja', ek_id=vanhentunut.ek.id) }}">
+                        <input type="submit" class="btn btn-primary" value="Poista"/>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}

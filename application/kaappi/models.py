@@ -24,3 +24,14 @@ class Kaappi(Base):
             listaus.append({"kaappi": rivi[0], "el": rivi[1]})
 
         return listaus
+
+    @staticmethod
+    def tyhjatkaapit():
+        kysely = text("SELECT COUNT(id) FROM kaappi WHERE id NOT IN (SELECT kaappi_id FROM elintarvike_kaapissa)")
+        tulos = db.engine.execute(kysely)
+
+        listaus = []
+        for rivi in tulos:
+            listaus.append(rivi[0])
+
+        return listaus[0]

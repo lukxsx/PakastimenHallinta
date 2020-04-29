@@ -33,3 +33,11 @@ def vanhentuneet():
 
 
     return render_template("paivays/listaus.html", lista=vanhentuneet, elin=Elintarvike, kaappi=Kaappi)
+
+@app.route("/paivays/poista/<ek_id>/", methods=["POST"])
+@login_required
+def vanhentuneen_poistaja(ek_id):
+    poistettava = ElintarvikeKaapissa.query.get(ek_id)
+    db.session.delete(poistettava)
+    db.session.commit()
+    return redirect(url_for("vanhentuneet"))
