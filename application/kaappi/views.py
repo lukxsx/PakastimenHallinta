@@ -3,6 +3,7 @@ from flask import redirect, render_template, request, url_for
 from flask_login import login_required, current_user
 from application.kaappi.models import Kaappi
 from application.kaappi.forms import KaappiForm
+from application.elintarvikekaapissa.models import ElintarvikeKaapissa
 
 
 @app.route("/kaapit", methods=["GET"])
@@ -29,4 +30,16 @@ def kaappi_lisaaja():
     db.session().add(k)
     db.session().commit()
 
+    return redirect(url_for("kaappi_listaus"))
+
+@app.route("/kaapit/poista/<kaappi_id>/", methods=["POST"])
+@login_required
+def kaappi_poisto(kaappi_id):
+    kaappi = Kaappi.query.get(kaappi_id)
+    ek = ElintarvikeKaapissa.query.filter_by(kaappi_id=kaappi_id).first()
+    if ek is None:
+        db.session.delete(kaappi)
+        db.session.commit()
+    else:
+        return render_template("error.html", errormessage="VIRHE: Kaappia, jossa on elintarvikkeita ei voi poistaa.")
     return redirect(url_for("kaappi_listaus"))

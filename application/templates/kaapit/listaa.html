@@ -3,10 +3,20 @@
 {% block body %}
     <h2>Kaapit</h2>
     <p><a href="{{ url_for('kaappi_lisays') }}">Lisää kaappi</a></p>
-    <ul class="list-group list-group-flush">
-        {% for kaappi in kaapit %}
-            <li class="list-group-item">{{ kaappi.nimi }}</li>
-            </ul>
-        {% endfor %}
-    </table>
+    <table class="table">
+    <tr>
+        <th>Kaappi</th>
+        <th>Poista</th>
+    </tr>
+    {% for kaappi in kaapit %}
+    <tr>
+        <td>{{ kaappi.nimi }}</td>
+        <td>
+            <form method="POST" action="{{ url_for('kaappi_poisto', kaappi_id=kaappi.id) }}">
+                <input type="submit" class="btn btn-primary" value="Poista"/>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
 {% endblock %}
