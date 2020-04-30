@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h2>Tilastoja</h2>
+    {% if kaappisisalto is defined %}
+
+        {% if not kaappisisalto %}
+            <p><i>Kaikki kaapit ovat tyhjiä :(</i></p>
+        {% else %}
+            <p>
+                Kaappien sisältö:
+            </p>
+            <ul class="list-group list-group-flush">
+                {% for k in kaappisisalto %}
+                    <li class="list-group-item">
+                        {{ k.kaappi }}: {{ k.el }} kpl
+                    </li>
+                {% endfor %}
+            </ul>
+            <p>Tyhjiä kaappeja: {{ tyhjat }} kpl</p>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+
