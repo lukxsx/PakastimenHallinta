@@ -20,7 +20,7 @@ def kirjautuminen():
                                error="Väärä käyttäjätunnus tai salasana")
 
     # tarkistetaan salasanan hashaus
-    salasana = form.salasana.data
+    salasana = form.salasana.data.encode('utf-8')
     if bcrypt.check_password_hash(kayttaja.hash, salasana):
         login_user(kayttaja)
         return redirect(url_for("index"))
@@ -51,8 +51,8 @@ def kayttajan_luonti():
         return render_template("auth/createaccount.html", form=form)
 
     # hashataan salasana ja lisätään käyttäjä
-    password = form.salasana.data
-    pw_hash = bcrypt.generate_password_hash(password)
+    password = form.salasana.data.encode('utf-8')
+    pw_hash = bcrypt.generate_password_hash(password).decode('utf-8')
     k = Kayttaja(form.tunnus.data, pw_hash)
     db.session.add(k)
     db.session.commit()
