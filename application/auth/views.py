@@ -1,7 +1,6 @@
 from flask import render_template, request, redirect, url_for
 from flask_login import login_user, logout_user
-
-from application import app, db
+from application import app, db, bcrypt
 from application.auth.forms import LoginForm, CreateAccount
 from application.auth.models import Kayttaja
 
@@ -13,13 +12,21 @@ def kirjautuminen():
 
     form = LoginForm(request.form)
 
-    user = Kayttaja.query.filter_by(tunnus=form.tunnus.data, salasana=form.salasana.data).first()
-    if not user:
+    kayttaja = Kayttaja.query.filter_by(tunnus=form.tunnus.data).first()
+
+    # tarkistetaan, löytyykö käyttäjää tietokannasta
+    if not kayttaja:
         return render_template("auth/loginform.html", form=form,
                                error="Väärä käyttäjätunnus tai salasana")
 
-    login_user(user)
-    return redirect(url_for("index"))
+    # tarkistetaan salasanan hashaus
+    salasana = form.salasana.data
+    if bcrypt.check_password_hash(kayttaja.salasana, salasana):
+        login_user(kayttaja)
+        return redirect(url_for("index"))
+    else:
+        return render_template("auth/loginform.html", form=form,
+                               error="Väärä käyttäjätunnus tai salasana")
 
 
 @app.route("/auth/ulos")
@@ -43,12 +50,14 @@ def kayttajan_luonti():
     if not form.validate():
         return render_template("auth/createaccount.html", form=form)
 
-    # luodaan käyttäjä
-    k = Kayttaja(form.tunnus.data, form.salasana.data)
+    # hashataan salasana ja lisätään käyttäjä
+    password = form.salasana.data
+    pw_hash = bcrypt.generate_password_hash(password)
+    k = Kayttaja(form.tunnus.data, pw_hash)
     db.session.add(k)
     db.session.commit()
 
-    # kirjaudutaan sisään
-    user = Kayttaja.query.filter_by(tunnus=form.tunnus.data, salasana=form.salasana.data).first()
+    # kirjaudutaan sisään uudella käyttäjällä
+    user = Kayttaja.query.filter_by(tunnus=form.tunnus.data).first()
     login_user(user)
     return redirect(url_for("index"))
