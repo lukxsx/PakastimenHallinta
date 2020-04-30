@@ -24,9 +24,9 @@ class ElintarvikeKaapissa(Base):
     def maarat_tyypeittain(k_id):
         kysely = text("SELECT E.nimi,"
                       " (SELECT SUM(maara)"
-                      " FROM elintarvike_kaapissa"
-                      " WHERE elintarvike_id = E.id"
-                      " AND kayttaja_id = :x) laskuri"
+                      " FROM elintarvike_kaapissa EK"
+                      " WHERE EK.elintarvike_id = E.id"
+                      " AND EK.kayttaja_id = :x) laskuri"
                       " FROM elintarvike E, elintarvike_kaapissa"
                       " GROUP BY E.nimi;").params(x=k_id)
         tulos = db.engine.execute(kysely)
