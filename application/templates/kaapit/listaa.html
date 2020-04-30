@@ -6,19 +6,26 @@
 
     <p><a href="{{ url_for('kaappi_lisays') }}">Lisää kaappi</a></p>
     <table class="table">
-    <tr>
-        <th>Kaappi</th>
-        <th>Poista</th>
-    </tr>
-    {% for kaappi in kaapit %}
-    <tr>
-        <td>{{ kaappi.nimi }}</td>
-        <td>
-            <form method="POST" action="{{ url_for('kaappi_poisto', kaappi_id=kaappi.id) }}">
-                <input type="submit" class="btn btn-primary" value="Poista"/>
-            </form>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+        <tr>
+            <th>Kaappi</th>
+            <th>Nimeä uudelleen</th>
+            <th>Poista</th>
+        </tr>
+        {% for kaappi in kaapit %}
+            <tr>
+                <td>{{ kaappi.nimi }}</td>
+                <td>
+                    <form method="POST" action="{{ url_for('kaappi_rename', kaappi_id=kaappi.id) }}">
+                        {{ rename.uusi(class="form-control") }}
+                        <input type="submit" class="btn btn-primary" value="Nimeä uudelleen"/>
+                    </form>
+                </td>
+                <td>
+                    <form method="POST" action="{{ url_for('kaappi_poisto', kaappi_id=kaappi.id) }}">
+                        <input type="submit" class="btn btn-primary" value="Poista"/>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}

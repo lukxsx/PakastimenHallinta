@@ -6,3 +6,10 @@ class KaappiForm(FlaskForm):
 
     class Meta:
         csrf = False
+
+
+class RenameForm(FlaskForm):
+    uusi = StringField("Nimi", [validators.InputRequired(), validators.Length(min=4, max=16)])
+
+    class Meta:
+        csrf = False

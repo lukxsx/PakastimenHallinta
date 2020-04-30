@@ -2,14 +2,15 @@ from application import app, db
 from flask import redirect, render_template, request, url_for
 from flask_login import login_required, current_user
 from application.kaappi.models import Kaappi
-from application.kaappi.forms import KaappiForm
+from application.kaappi.forms import KaappiForm, RenameForm
 from application.elintarvikekaapissa.models import ElintarvikeKaapissa
 
 
 @app.route("/kaapit", methods=["GET"])
 @login_required
 def kaappi_listaus():
-    return render_template("kaapit/listaa.html", kaapit=Kaappi.query.filter_by(kayttaja_id=current_user.id).all())
+    return render_template("kaapit/listaa.html", kaapit=Kaappi.query.filter_by(kayttaja_id=current_user.id).all(),
+                           rename=RenameForm())
 
 
 @app.route("/kaapit/lisaa/")
@@ -42,4 +43,12 @@ def kaappi_poisto(kaappi_id):
         db.session.commit()
     else:
         return render_template("error.html", errormessage="VIRHE: Kaappia, jossa on elintarvikkeita ei voi poistaa.")
+    return redirect(url_for("kaappi_listaus"))
+
+@app.route("/kaapit/rename/<kaappi_id>/", methods=["POST"])
+@login_required
+def kaappi_rename(kaappi_id):
+    kaappi = Kaappi.query.get(kaappi_id)
+    kaappi.nimi = request.form.get("uusi")
+    db.session.commit()
     return redirect(url_for("kaappi_listaus"))
