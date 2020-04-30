@@ -2,27 +2,7 @@
 
 {% block body %}
     {% if current_user.is_authenticated %}
-        <h2>Tilastoja</h2>
-        {% if kaappisisalto is defined %}
-
-            {% if not kaappisisalto %}
-                <p><i>Kaikki kaapit ovat tyhjiä :(</i></p>
-            {% else %}
-                <p>
-                    Kaappien sisältö:
-                </p>
-                <ul class="list-group list-group-flush">
-                    {% for k in kaappisisalto %}
-                        <li class="list-group-item">
-                            {{ k.kaappi }}: {{ k.el }} kpl
-                        </li>
-                    {% endfor %}
-                <li class="list-group-item">
-                            Tyhjiä kaappeja: {{ tyhjat }} kpl
-                        </li>
-                </ul>
-            {% endif %}
-        {% endif %}
+        <p>Tervetuloa!</p>
     {% else %}
         <h1>Tervetuloa</h1>
         <p>Kirjaudu sisään, ole hyvä.</p>

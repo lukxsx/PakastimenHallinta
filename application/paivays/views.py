@@ -1,7 +1,7 @@
 import datetime
 
 from flask import redirect, render_template, url_for
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from application import app, db
 from application.elintarvike.models import Elintarvike
@@ -23,7 +23,7 @@ class Vanhentunut:
 @login_required
 def vanhentuneet():
     today = datetime.date.today()
-    ek = ElintarvikeKaapissa.query.all()
+    ek = ElintarvikeKaapissa.query.filter_by(kayttaja_id=current_user.id).all()
     vanhentuneet = []
     for elink in ek:
         s = Elintarvike.query.filter_by(id=elink.elintarvike_id).first()

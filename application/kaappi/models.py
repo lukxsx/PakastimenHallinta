@@ -13,12 +13,13 @@ class Kaappi(Base):
         self.nimi = nimi
 
     @staticmethod
-    def kaappisisalto():
+    def kaappisisalto(k_id):
         kysely = text("SELECT kaappi.nimi, SUM(elintarvike_kaapissa.maara)"
                       " FROM elintarvike_kaapissa"
                       " LEFT JOIN kaappi ON elintarvike_kaapissa.kaappi_id=kaappi.id"
+                      " WHERE kaappi.kayttaja_id = :x"
                       " GROUP BY kaappi.nimi")
-        tulos = db.engine.execute(kysely)
+        tulos = db.engine.execute(kysely, x=k_id)
 
         listaus = []
         for rivi in tulos:
@@ -27,9 +28,10 @@ class Kaappi(Base):
         return listaus
 
     @staticmethod
-    def tyhjatkaapit():
-        kysely = text("SELECT COUNT(id) FROM kaappi WHERE id NOT IN (SELECT kaappi_id FROM elintarvike_kaapissa)")
-        tulos = db.engine.execute(kysely)
+    def tyhjatkaapit(k_id):
+        kysely = text("SELECT COUNT(id) FROM kaappi WHERE id NOT IN (SELECT kaappi_id FROM elintarvike_kaapissa)"
+                      " AND kaappi.kayttaja_id = :x")
+        tulos = db.engine.execute(kysely, x=k_id)
 
         listaus = []
         for rivi in tulos:
