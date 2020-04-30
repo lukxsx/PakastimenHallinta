@@ -14,7 +14,7 @@ kayttaja.hash FROM kayttaja WHERE kayttaja.id = ?```
  LIMIT ? OFFSET ?```
     * Poistetaan kaappi ```DELETE FROM kaappi WHERE kaappi.id = ?```
 - [x] Kaapin uudelleennimeäminen
-    * Haetaan uudelleennimettävä kaappi ```SELECT kaappi.id AS kaappi_id, kaappi.nimi, kaappi.kayttaja_id FROM kaappi WHERE kaappi.id = ?```
+    * Haetaan uudelleennimettävä kaappi ```SELECT kaappi.id, kaappi.nimi, kaappi.kayttaja_id FROM kaappi WHERE kaappi.id = ?```
     * Nimetään kaappi uudelleen ```UPDATE kaappi SET nimi=? WHERE kaappi.id = ?```
 - [x] Elintarviketyypin lisääminen
     * ```INSERT INTO elintarvike (nimi, sailyvyys, kayttaja_id) VALUES (?, ?, ?)```
