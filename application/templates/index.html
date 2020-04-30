@@ -1,25 +1,23 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    {% if current_user.is_authenticated %}
-        <h1>Tervetuloa!</h1>
-        <p>
-            Sovelluksella voi pitää kirjaa pakastimen ja jääkaapin sisällöistä. Pakastimeen ja jääkaappiin voi unohtua
-            ruokaa pitkäksikin aikaa. Tämä sovellus pitää kirjaa kaappeihin asetetuista elintarvikkeista.
-        </p>
-        <p>
-            Sovellukseen
-            voidaan lisätä kaappeja (esim. pakastin, jääkaappi yms). Sovellukseen voidaan lisätä eri
-            elintarviketyyppejä,
-            ja niitä voidaan sitten lisätä eri kaappeihin. Ruokia lisättäessä niille valitaan päiväys, joka kertoo
-            milloin ne on laitettu kaappiin. Ohjelmassa voidaan sen jälkeen näyttää listauksia kaappien sisällöistä ja
-            näyttää esimerkiksi vanhentuneet ruoat.
-        </p>
-        <p>Voit lukea sovelluksen käyttöohjeen
-            <a href="https://github.com/Lukxsx/PakastimenHallinta/blob/master/documentation/kayttoohje.md">
-                täältä</a>.</p>
-    {% else %}
-        <h1>Tervetuloa</h1>
+    <h1>Tervetuloa</h1>
+    {% if not current_user.is_authenticated %}
         <p><a href={{ url_for('kirjautuminen') }}>Kirjaudu sisään</a>, ole hyvä.</p>
     {% endif %}
+    <p>
+        Sovelluksella voidaan pitää kirjaa pakastimen ja jääkaapin sisällöistä. Pakastimeen ja jääkaappiin voi unohtua
+        ruokaa pitkäksikin aikaa. Tämä sovellus pitää kirjaa kaappeihin asetetuista elintarvikkeista.
+    </p>
+    <p>
+        Sovellukseen
+        voidaan lisätä kaappeja (esim. pakastin, jääkaappi yms). Sovellukseen voidaan lisätä eri
+        elintarviketyyppejä,
+        ja niitä voidaan sitten lisätä eri kaappeihin. Ruokia lisättäessä niille valitaan päiväys, joka kertoo
+        milloin ne on laitettu kaappiin. Ohjelmassa voidaan sen jälkeen näyttää listauksia kaappien sisällöistä ja
+        näyttää esimerkiksi vanhentuneet ruoat.
+    </p>
+    <p>Voit lukea sovelluksen käyttöohjeen
+        <a href="https://github.com/Lukxsx/PakastimenHallinta/blob/master/documentation/kayttoohje.md">
+            täältä</a>.</p>
 {% endblock %}
