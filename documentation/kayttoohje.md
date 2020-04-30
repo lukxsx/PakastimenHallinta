@@ -55,3 +55,6 @@ Elintarvikkeen voi poistaa kaapista myös suoraan vanhentuneiden elintarvikkeide
 ## Vanhentuneiden elintarvikkeiden tarkastelu
 Valitse yläpalkista "Vanhentuneet elintarvikkeet". Tässä näet tällä hetkellä kaapissa olevat vanhentuneet
 elintarvikkeet.
+
+## Tilastojen tarkastelu
+Valitse yläpalkista "Tilastot". Sivulla näytetään tilastoja mm. kaappien sisällöistä. 
