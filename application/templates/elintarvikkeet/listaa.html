@@ -1,31 +1,33 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<h2>Elintarviketyypit</h2>
-<p><a href="{{ url_for('elintarvike_lisays') }}">Lisää elintarviketyyppi</a></p>
-<table class="table">
-    <tr>
-        <th>Elintarvike</th>
-        <th>Säilyvyys päivinä</th>
-        <th>Päivitä säilyvyys</th>
-        <th>Poista</th>
-    </tr>
-    {% for elintarvike in elintarvikkeet %}
-    <tr>
-        <td>{{ elintarvike.nimi }}</td>
-        <td>{{ elintarvike.sailyvyys }}</td>
-        <td>
-            <form method="POST" action="{{ url_for('elintarvike_paivitys', elintarvike_id=elintarvike.id) }}">
-                {{ pform.uusi(class="form-control") }}
-                <input type="submit" class="btn btn-primary" value="Päivitä säilyvyys"/>
-            </form>
-        </td>
-        <td>
-            <form method="POST" action="{{ url_for('elintarvike_poisto', elintarvike_id=elintarvike.id) }}">
-                <input type="submit" class="btn btn-primary" value="Poista"/>
-            </form>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+    <h1>Elintarviketyypit</h1>
+    <hr>
+
+    <p><a href="{{ url_for('elintarvike_lisays') }}">Lisää elintarviketyyppi</a></p>
+    <table class="table">
+        <tr>
+            <th>Elintarvike</th>
+            <th>Säilyvyys päivinä</th>
+            <th>Päivitä säilyvyys</th>
+            <th>Poista</th>
+        </tr>
+        {% for elintarvike in elintarvikkeet %}
+            <tr>
+                <td>{{ elintarvike.nimi }}</td>
+                <td>{{ elintarvike.sailyvyys }}</td>
+                <td>
+                    <form method="POST" action="{{ url_for('elintarvike_paivitys', elintarvike_id=elintarvike.id) }}">
+                        {{ pform.uusi(class="form-control") }}
+                        <input type="submit" class="btn btn-primary" value="Päivitä säilyvyys"/>
+                    </form>
+                </td>
+                <td>
+                    <form method="POST" action="{{ url_for('elintarvike_poisto', elintarvike_id=elintarvike.id) }}">
+                        <input type="submit" class="btn btn-primary" value="Poista"/>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}

@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    <h2>Lisää elintarvike kaappiin</h2>
+    <h1>Lisää elintarvike kaappiin</h1>
+    <hr>
+
     <form method="POST" action="{{ url_for('ek_lisaaja') }}">
         <div class="form-group">
             <label for="elintarvike">{{ form.elintarvike.label }}</label>

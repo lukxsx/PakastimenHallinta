@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    <h2>Lisää elintarviketyyppi</h2>
+    <h1>Lisää elintarviketyyppi</h1>
+    <hr>
+
     <form method="POST" action="{{ url_for('elintarvike_lisaaja') }}">
         <div class="form-group">
             <label for="nimi">{{ form.nimi.label }}</label>

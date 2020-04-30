@@ -3,7 +3,9 @@
 {% block body %}
     {{ error }}
     <form method="POST" action="{{ url_for('kayttajan_luonti') }}">
-        <h2>Rekisteröityminen</h2>
+        <h1>Rekisteröityminen</h1>
+        <hr>
+
         <div class="form-group">
             <label for="tunnus">{{ form.tunnus.label }}</label>
             {{ form.tunnus(class="form-control") }}

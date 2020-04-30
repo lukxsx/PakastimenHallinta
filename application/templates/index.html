@@ -2,6 +2,9 @@
 
 {% block body %}
     <h1>Tervetuloa</h1>
+
+    <hr>
+
     {% if not current_user.is_authenticated %}
         <p><a href={{ url_for('kirjautuminen') }}>Kirjaudu sisään</a>, ole hyvä.</p>
     {% endif %}

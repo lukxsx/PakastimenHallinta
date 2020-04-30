@@ -3,7 +3,8 @@
 {% block body %}
     {{ error }}
     <form method="POST" action="{{ url_for('kirjautuminen') }}">
-        <h2>Kirjaudu sisään</h2>
+        <h1>Kirjaudu sisään</h1>
+        <hr>
 
         <div class="form-group">
             <label for="tunnus">{{ form.tunnus.label }}</label>
@@ -15,5 +16,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
     </form>
+    <hr>
     <p>Eikö sinulla ole vielä käyttäjätunnusta? <a href="{{ url_for("kayttajan_luonti") }}">Luo uusi käyttäjä</a></p>
 {% endblock %}
