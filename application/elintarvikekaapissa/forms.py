@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask_login import current_user
 from flask_wtf import FlaskForm
 from wtforms import validators
@@ -18,7 +19,7 @@ class EKForm(FlaskForm):
                               allow_blank=False, get_label='nimi')
     taso = IntegerField("Taso", widget=NumberInput(min=1, max=10), default=1)
     maara = IntegerField("Määrä", widget=NumberInput(min=1, max=100), default=1)
-    laitettu = DateField('Laitettu kaappiin', [validators.InputRequired()])
+    laitettu = DateField('Laitettu kaappiin', default=datetime.today, validators=[validators.DataRequired()])
 
     class Meta:
         csrf = False
