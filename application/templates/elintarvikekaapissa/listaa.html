@@ -9,6 +9,7 @@
             <th>Kaappi</th>
             <th>Taso</th>
             <th>Määrä</th>
+            <th>Laitettu kaappiin</th>
             <th>Poista</th>
         </tr>
         {% for e in ek %}
@@ -17,6 +18,7 @@
                 <td>{{ kaap.query.get(e.kaappi_id).nimi }}</td>
                 <td>{{ e.taso }}</td>
                 <td>{{ e.maara }}</td>
+                <td>{{ e.laitettu_kaappiin.day }}.{{ e.laitettu_kaappiin.month }}.{{ e.laitettu_kaappiin.year }}</td>
                 <td>
                     <form method="POST" action="{{ url_for('ek_poistaja', ek_id=e.id) }}">
                         <input type="submit" class="btn btn-primary" value="Poista"/>
