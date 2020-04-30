@@ -9,18 +9,12 @@ kayttaja.hash FROM kayttaja WHERE kayttaja.id = ?```
 - [x] Kaapin lisääminen
     * ```INSERT INTO kaappi (nimi, kayttaja_id) VALUES (?, ?)```
 - [x] Kaapin poistaminen
-    * Haetaan poistettava kaappi ```SELECT kaappi.id AS kaappi_id, kaappi.nimi AS kaappi_nimi, kaappi.kayttaja_id AS kaappi_kayttaja_id
-FROM kaappi
-WHERE kaappi.id = ?```
-    * Tarkistetaan, onko kaapissa elintarvikkeita ```SELECT elintarvike_kaapissa.id AS elintarvike_kaapissa_id, elintarvike_kaapissa.taso AS elintarvike_kaapissa_taso, elintarvike_kaapissa.maara AS elintarvike_kaapissa_maara, elintarvike_kaapissa.laitettu_kaappiin AS elintarvike_kaapissa_laitettu_kaappiin, elintarvike_kaapissa.elintarvike_id AS elintarvike_kaapissa_elintarvike_id, elintarvike_kaapissa.kaappi_id AS elintarvike_kaapissa_kaappi_id, elintarvike_kaapissa.kayttaja_id AS elintarvike_kaapissa_kayttaja_id
-FROM elintarvike_kaapissa
-WHERE elintarvike_kaapissa.kaappi_id = ?
+    * Haetaan poistettava kaappi ```SELECT kaappi.id, kaappi.nimi, kaappi.kayttaja_id FROM kaappi WHERE kaappi.id = ?```
+    * Tarkistetaan, onko kaapissa elintarvikkeita ```SELECT elintarvike_kaapissa.id, elintarvike_kaapissa.taso, elintarvike_kaapissa.maara, elintarvike_kaapissa.laitettu_kaappiin, elintarvike_kaapissa.elintarvike_id, elintarvike_kaapissa.kaappi_id, elintarvike_kaapissa.kayttaja_id FROM elintarvike_kaapissa WHERE elintarvike_kaapissa.kaappi_id = ?
  LIMIT ? OFFSET ?```
     * Poistetaan kaappi ```DELETE FROM kaappi WHERE kaappi.id = ?```
 - [x] Kaapin uudelleennimeäminen
-    * Haetaan uudelleennimettävä kaappi ```SELECT kaappi.id AS kaappi_id, kaappi.nimi AS kaappi_nimi, kaappi.kayttaja_id AS kaappi_kayttaja_id
-FROM kaappi
-WHERE kaappi.id = ?```
+    * Haetaan uudelleennimettävä kaappi ```SELECT kaappi.id AS kaappi_id, kaappi.nimi, kaappi.kayttaja_id FROM kaappi WHERE kaappi.id = ?```
     * Nimetään kaappi uudelleen ```UPDATE kaappi SET nimi=? WHERE kaappi.id = ?```
 - [x] Elintarviketyypin lisääminen
     * ```INSERT INTO elintarvike (nimi, sailyvyys, kayttaja_id) VALUES (?, ?, ?)```
