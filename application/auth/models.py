@@ -10,6 +10,7 @@ class Kayttaja(Base):
     salasana = db.Column(db.String(144), nullable=False)
 
     kaapit = db.relationship("Kaappi", backref='kayttaja', lazy=True)
+    elintarvikkeet_kaapeissa = db.relationship("ElintarvikeKaapissa", backref='kayttaja', lazy=True)
 
     def __init__(self, tunnus, salasana):
         self.tunnus = tunnus

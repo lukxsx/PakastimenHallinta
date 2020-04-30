@@ -25,6 +25,7 @@ def ek_lisaaja():
     laitettu = form.laitettu.data
     
     ek = ElintarvikeKaapissa(e, k, taso, maara, laitettu)
+    ek.kayttaja_id = current_user.id
     db.session.add(ek)
     db.session.commit()
 
@@ -42,4 +43,6 @@ def ek_poistaja(ek_id):
 @app.route("/ek/", methods=["GET"])
 @login_required
 def ek_listaus():
-    return render_template("elintarvikekaapissa/listaa.html", ek=ElintarvikeKaapissa.query.all(), elin=Elintarvike, kaap=Kaappi)
+    return render_template("elintarvikekaapissa/listaa.html",
+                           ek=ElintarvikeKaapissa.query.filter_by(kayttaja_id=current_user.id).all(),
+                           elin=Elintarvike, kaap=Kaappi)
