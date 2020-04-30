@@ -5,6 +5,7 @@ from sqlalchemy.sql import text
 class Kaappi(Base):
     id = db.Column(db.Integer, primary_key=True)
     nimi = db.Column(db.String(144), nullable=False)
+    kayttaja_id = db.Column(db.Integer, db.ForeignKey('kayttaja.id'), nullable=False)
 
     db.relationship("ElintarvikeKaapissa", backref='account', lazy=True)
 

@@ -9,6 +9,8 @@ class Kayttaja(Base):
     tunnus = db.Column(db.String(144), nullable=False)
     salasana = db.Column(db.String(144), nullable=False)
 
+    kaapit = db.relationship("Kaappi", backref='kayttaja', lazy=True)
+
     def __init__(self, tunnus, salasana):
         self.tunnus = tunnus
         self.salasana = salasana
