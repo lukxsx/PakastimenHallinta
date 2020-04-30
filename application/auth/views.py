@@ -21,7 +21,7 @@ def kirjautuminen():
 
     # tarkistetaan salasanan hashaus
     salasana = form.salasana.data
-    if bcrypt.check_password_hash(kayttaja.salasana, salasana):
+    if bcrypt.check_password_hash(kayttaja.hash, salasana):
         login_user(kayttaja)
         return redirect(url_for("index"))
     else:
