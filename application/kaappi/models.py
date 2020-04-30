@@ -18,8 +18,8 @@ class Kaappi(Base):
                       " FROM elintarvike_kaapissa"
                       " LEFT JOIN kaappi ON elintarvike_kaapissa.kaappi_id=kaappi.id"
                       " WHERE kaappi.kayttaja_id = :x"
-                      " GROUP BY kaappi.nimi")
-        tulos = db.engine.execute(kysely, x=k_id)
+                      " GROUP BY kaappi.nimi").params(x=k_id)
+        tulos = db.engine.execute(kysely)
 
         listaus = []
         for rivi in tulos:
@@ -30,8 +30,8 @@ class Kaappi(Base):
     @staticmethod
     def tyhjatkaapit(k_id):
         kysely = text("SELECT COUNT(id) FROM kaappi WHERE id NOT IN (SELECT kaappi_id FROM elintarvike_kaapissa)"
-                      " AND kaappi.kayttaja_id = :x")
-        tulos = db.engine.execute(kysely, x=k_id)
+                      " AND kaappi.kayttaja_id = :x").params(x=k_id)
+        tulos = db.engine.execute(kysely)
 
         listaus = []
         for rivi in tulos:
