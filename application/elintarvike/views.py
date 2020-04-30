@@ -1,6 +1,6 @@
 from application import app, db
 from flask import redirect, render_template, request, url_for
-from flask_login import login_required
+from flask_login import login_required, current_user
 from application.elintarvike.models import Elintarvike
 from application.elintarvikekaapissa.models import ElintarvikeKaapissa
 from application.elintarvike.forms import ElintarvikeForm, PaivitysForm
@@ -9,7 +9,7 @@ from application.elintarvike.forms import ElintarvikeForm, PaivitysForm
 @app.route("/elintarvikkeet", methods=["GET"])
 @login_required
 def elintarvike_listaus():
-    return render_template("elintarvikkeet/listaa.html", elintarvikkeet=Elintarvike.query.all(), pform=PaivitysForm())
+    return render_template("elintarvikkeet/listaa.html", elintarvikkeet=Elintarvike.query.filter_by(kayttaja_id=current_user.id).all(), pform=PaivitysForm())
 
 
 @app.route("/elintarvikkeet/lisaa/")
@@ -46,6 +46,7 @@ def elintarvike_lisaaja():
         return render_template("elintarvikkeet/lisaa.html", form = form)
 
     e = Elintarvike(form.nimi.data, form.sailyvyys.data)
+    e.kayttaja_id = current_user.id
     db.session().add(e)
     db.session().commit()
 

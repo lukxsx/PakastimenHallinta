@@ -11,6 +11,7 @@ class Kayttaja(Base):
 
     kaapit = db.relationship("Kaappi", backref='kayttaja', lazy=True)
     elintarvikkeet_kaapeissa = db.relationship("ElintarvikeKaapissa", backref='kayttaja', lazy=True)
+    elintarvikkeet = db.relationship("Elintarvike", backref='kayttaja', lazy=True)
 
     def __init__(self, tunnus, salasana):
         self.tunnus = tunnus
