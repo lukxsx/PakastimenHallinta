@@ -1,25 +1,48 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    <h2>Tilastoja</h2>
+    <h1>Tilastoja</h1>
+    <hr>
     {% if kaappisisalto is defined %}
-
         {% if not kaappisisalto %}
             <p><i>Kaikki kaapit ovat tyhjiä :(</i></p>
         {% else %}
-            <p>
-                Kaappien sisältö:
-            </p>
-            <ul class="list-group list-group-flush">
+            <h4>Kaappien sisältö</h4>
+            <table class="table">
+            <tr>
+                <th>Kaappi</th>
+                <th>Elintarvikkeita kaapissa</th>
+            </tr>
                 {% for k in kaappisisalto %}
-                    <li class="list-group-item">
-                        {{ k.kaappi }}: {{ k.el }} kpl
-                    </li>
+                    <tr>
+                    <td>{{ k.kaappi }}</td>
+                    <td>{{ k.el }} kpl</td>
+                </tr>
                 {% endfor %}
-            </ul>
-            <p>Tyhjiä kaappeja: {{ tyhjat }} kpl</p>
+            </table>
+
         {% endif %}
     {% endif %}
+
+    <hr>
+
+    {% if maarat_tyypeittain is defined %}
+        <h4>Elintarviketyyppien määrä kaapeissa</h4>
+        <table class="table">
+            <tr>
+                <th>Elintarviketyyppi</th>
+                <th>Määrä kaapeissa</th>
+            </tr>
+            {% for m in maarat_tyypeittain %}
+                <tr>
+                    <td>{{ m.elintarviketyyppi }}</td>
+                    <td>{{ m.maara }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    <hr>
+    <p>Tyhjiä kaappeja: {{ tyhjat }} kpl</p>
 {% endblock %}
 
 
