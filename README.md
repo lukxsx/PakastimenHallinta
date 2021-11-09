@@ -7,8 +7,6 @@ Sovellukseen voidaan lisätä kaappeja (esim. pakastin, jääkaappi yms). Sovell
 
 Tunnukset: _testi_, salasana: _salasana_
 
-_Huomasin vasta palautuksen jälkeen, että toinen yhteenvetokyselyistä ei jostain syystä toimi PostgreSQL:llä (jokin alikyselyihin liittyvä juttu) ja aiheuttaa virheen Herokussa käytettäessä. Se toimii tällä hetkellä vain paikallisesti SQLitellä. Yritän selvittää asiaa._
-
 ## Dokumentaatio
 
 * [Asennusohje](documentation/asennusohje.md)
